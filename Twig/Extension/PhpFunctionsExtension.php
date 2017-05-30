@@ -2,31 +2,20 @@
 
 namespace Chebur\TwigPhpFunctionsBundle\Twig\Extension;
 
-use Twig_Extension;
-use Twig_SimpleFunction;
-
-class PhpFunctionsExtension extends Twig_Extension
+class PhpFunctionsExtension extends \Twig_Extension
 {
     /**
      * Function name
      * @var string
      */
-    protected $function_name;
+    protected $functionName;
 
     /**
-     * @var array
+     * @param string $functionName
      */
-    protected $functions = array(
-        //todo добавить функций + сделать поддержку опций для каждой + разделить на группы
-        //todo сделать возможным добавлять интересующие функции через конфиг, чтобы не захламлять память
-    );
-
-    /**
-     * @param string $function_name
-     */
-    public function __construct($function_name)
+    public function __construct($functionName)
     {
-        $this->function_name = $function_name;
+        $this->functionName = $functionName;
     }
 
     /**
@@ -42,20 +31,10 @@ class PhpFunctionsExtension extends Twig_Extension
      */
     public function getFunctions()
     {
-        //todo проверить на вызов статических методов классов
+        //todo проверить на вызов статических методов классов + проверить опции
         $functions = array(
-            new Twig_SimpleFunction($this->function_name, array($this, 'callPhpFunction'), array('is_safe' => array('all'))),
-            new Twig_SimpleFunction('clone', function($e) {
-                return clone $e;
-            }),
+            new \Twig_SimpleFunction($this->functionName, array($this, 'callPhpFunction'), array('is_safe' => array('all'))),
         );
-
-        /*
-        foreach($this->functions as $function ) {
-            $functions[] = new \Twig_SimpleFunction($function, $function, array('is_safe' => array('all')));
-        }
-        */
-
         return $functions;
     }
 
@@ -66,16 +45,6 @@ class PhpFunctionsExtension extends Twig_Extension
         unset($function_args[0]);
 
         return call_user_func_array($function_name, $function_args);
-    }
-
-    /**
-     * @return array
-     */
-    public function getTests()
-    {
-        return array( //todo
-            //new Twig_SimpleFunction('instanceof', function($instance, $class){ return $instance instanceof $class; }),
-        );
     }
 
 }

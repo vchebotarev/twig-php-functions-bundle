@@ -1,12 +1,12 @@
 
 parameters:
-    chebur.twig_php_functions.class: Chebur\TwigPhpFunctionsBundle\Twig\Extension\PhpFunctionsExtension
+    chebur.twig_php_functions.class: 'Chebur\TwigPhpFunctionsBundle\Twig\Extension\PhpFunctionsExtension'
 
 services:
-    chebur.twig_extension.php_functions:
-        class: %chebur.twig_php_functions.class%
+    chebur.twig_php_functions.twig.extension.php_functions:
+        class: '%chebur.twig_php_functions.class%'
         public: false
         arguments:
-            - %chebur.twig_php_functions.function_name%
+            - '%chebur.twig_php_functions.function_name%'
         tags:
             - { name: twig.extension }
