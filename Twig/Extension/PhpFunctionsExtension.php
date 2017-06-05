@@ -34,6 +34,9 @@ class PhpFunctionsExtension extends \Twig_Extension
         //todo проверить на вызов статических методов классов + проверить опции
         $functions = array(
             new \Twig_SimpleFunction($this->functionName, array($this, 'callPhpFunction'), array('is_safe' => array('all'))),
+            new \Twig_SimpleFunction('clone', function($e) {
+                return clone $e;
+            }),
         );
         return $functions;
     }
