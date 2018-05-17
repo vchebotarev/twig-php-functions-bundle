@@ -1,10 +1,12 @@
 {
     "name":        "chebur/twig-php-functions-bundle",
     "type":        "symfony-bundle",
-    "description": "Symfony 2 bundle to execute native functions in twig templates",
+    "description": "Symfony bundle to execute native php functions in twig templates",
     "keywords": [
         "symfony",
         "symfony2",
+        "symfony3",
+        "symfony4",
         "bundle",
         "php",
         "functions",
@@ -21,5 +23,11 @@
     ],
     "autoload": {
         "psr-4": { "Chebur\\TwigPhpFunctionsBundle\\": "" }
+    },
+    "require": {
+        "symfony/config":               "^3.4 || ^4.0",
+        "symfony/dependency-injection": "^3.4 || ^4.0",
+        "symfony/http-kernel":          "^3.4 || ^4.0",
+        "twig/twig":                    "^1.0 || ^2.0"
     }
 }
