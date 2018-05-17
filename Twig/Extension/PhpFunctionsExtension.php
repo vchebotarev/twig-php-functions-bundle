@@ -19,14 +19,6 @@ class PhpFunctionsExtension extends \Twig_Extension
     }
 
     /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'chebur_php_functions_extension';
-    }
-
-    /**
      * @return array
      */
     public function getFunctions()
